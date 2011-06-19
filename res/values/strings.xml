@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RFIDPrinter</string>
+    <string name="target_not_found">%1$s not found.</string>
+    <string name="printer_status_label">Status:</string>
+    <string name="printer_status_idle">Idle</string>
+    <string name="open">Open Device</string>
+    <string name="init">Initialize</string>
+    <string name="status">Get Status</string>
+    <string name="set_mode">Set Mode</string>
+    <string name="set_mergin">Set Mergin</string>
+    <string name="set_enhanced_mode">Set Enhanced Mode</string>
+    <string name="switch_command_mode">Switch Command Mode</string>
+    <string name="send_raster_line">Send Raster Line</string>
+    <string name="send_zero_raster_line">Send Zero Raster Line</string>
+    <string name="start_print_with_half_cut">Start Print(HalfCut)</string>
+    <string name="start_print">Start Print</string>
+    <string name="start_print_with_evacuation">Start Print(Evacuation)</string>
+    <string name="set_print_information">Set Print Information</string>
+    <string name="select_compression_mode">Select Compression Mode</string>
+    <string name="void_command">Void</string>
+    <string name="msg_no_device_found">No device found.</string>
+    <string name="msg_device_found">%1$s device(s) found.</string>
+</resources>

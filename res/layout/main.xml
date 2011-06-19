@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" android:padding="10dp">
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:orientation="horizontal"
+		android:padding="10dp">
+		<TextView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/printer_status_label"
+			android:layout_marginRight="4dp" />
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="@string/printer_status_idle" />
+	</LinearLayout>
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:orientation="vertical"
+			android:padding="10dp">
+			<Button android:id="@+id/open_button" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:text="@string/open"
+				android:background="@drawable/red_button" style="@style/ButtonText" />
+			<Button android:id="@+id/init_button" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:text="@string/init"
+				android:background="@drawable/blue_button" style="@style/ButtonText" />
+			<Button android:id="@+id/status_button" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:text="@string/status"
+				android:background="@drawable/purple_button" style="@style/ButtonText" />
+			<Button android:id="@+id/set_mode_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/set_mode" android:background="@drawable/green_button"
+				style="@style/ButtonText" />
+			<Button android:id="@+id/set_mergin_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/set_mergin" android:background="@drawable/yellow_button"
+				style="@style/ButtonText" />
+			<Button android:id="@+id/set_enhanced_mode_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/set_enhanced_mode" android:background="@drawable/black_button"
+				style="@style/ButtonText" />
+			<Button android:id="@+id/switch_commnad_mode_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/switch_command_mode" />
+			<Button android:id="@+id/send_raster_line_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/send_raster_line" />
+			<Button android:id="@+id/send_zero_raster_line_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/send_zero_raster_line" />
+			<Button android:id="@+id/start_print_with_half_cut_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/start_print_with_half_cut" />
+			<Button android:id="@+id/start_print_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/start_print" />
+			<Button android:id="@+id/start_print_with_evacuation_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/start_print_with_evacuation" />
+			<Button android:id="@+id/set_print_information_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/set_print_information" />
+			<Button android:id="@+id/select_compression_mode_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/select_compression_mode" />
+			<Button android:id="@+id/void_command_button"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:text="@string/void_command" />
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

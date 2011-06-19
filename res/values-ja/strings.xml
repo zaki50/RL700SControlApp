@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RFIDPrinter</string>
+    <string name="target_not_found">%1$s が見つかりません</string>
+</resources>
