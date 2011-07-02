@@ -2,4 +2,14 @@
 <resources>
     <string name="app_name">RFIDPrinter</string>
     <string name="target_not_found">%1$s が見つかりません</string>
+    <string name="printer_status_label">ステータス:</string>
+    <string name="printer_status_idle">Idle</string>
+    <string name="tape_type_label">テープカートリッジ:</string>
+    <string name="unknown_tape_type">不明</string>
+
+    <string name="msg_no_device_found">デバイスは接続されていません。</string>
+    <string name="msg_device_found">デバイスが %1$s個みつかりました。</string>
+    <string name="msg_failed_to_open_printer">プリンターとの接続に失敗しました。</string>
+
+    <string name="shortcut_progressdialog_title">読み込み中...</string>
 </resources>

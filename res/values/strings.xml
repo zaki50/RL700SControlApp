@@ -4,6 +4,9 @@
     <string name="target_not_found">%1$s not found.</string>
     <string name="printer_status_label">Status:</string>
     <string name="printer_status_idle">Idle</string>
+    <string name="tape_type_label">Tape:</string>
+    <string name="unknown_tape_type">Unknown</string>
+
     <string name="open">Open Device</string>
     <string name="init">Initialize</string>
     <string name="status">Get Status</string>
@@ -21,4 +24,7 @@
     <string name="void_command">Void</string>
     <string name="msg_no_device_found">No device found.</string>
     <string name="msg_device_found">%1$s device(s) found.</string>
+    <string name="msg_failed_to_open_printer">Failed to open Printer.</string>
+
+    <string name="shortcut_progressdialog_title">Loading...</string>
 </resources>

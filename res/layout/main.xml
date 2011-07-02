@@ -9,7 +9,18 @@
 			android:layout_height="wrap_content" android:text="@string/printer_status_label"
 			android:layout_marginRight="4dp" />
 		<TextView android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:text="@string/printer_status_idle" />
+			android:layout_height="wrap_content" android:id="@+id/printer_status"
+			android:text="@string/printer_status_idle" />
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:orientation="horizontal"
+		android:padding="10dp">
+		<TextView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/tape_type_label"
+			android:layout_marginRight="4dp" />
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:id="@+id/tape_type"
+			android:text="@string/unknown_tape_type" />
 	</LinearLayout>
 	<ScrollView android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
