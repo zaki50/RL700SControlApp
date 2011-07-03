@@ -5,7 +5,6 @@ import org.zakky.rl700s.comm.RL700SCommands;
 import org.zakky.rl700s.comm.RL700SCommands.CommandMode;
 import org.zakky.rl700s.comm.RL700SCommands.CompressionMode;
 import org.zakky.rl700s.comm.RL700SCommands.EnhancedMode;
-import org.zakky.rl700s.comm.RL700SCommands.Mode;
 import org.zakky.rl700s.comm.RL700SCommands.Paper;
 import org.zakky.rl700s.comm.RL700SStatus;
 import org.zakky.rl700s.comm.RL700SStatus.ErrorInfo;
@@ -410,7 +409,8 @@ public class PrintActivity extends Activity {
 
                             switch (status.getStatusType()) {
                                 case 0: // ステータスリクエストへの応答
-
+                                    handleStatusUpdate(status.getMediaType(),
+                                            status.getMediaWidth(), status.getMediaLength());
                                     break;
                                 case 1: // 印刷終了
                                     handleFinish();
@@ -435,6 +435,18 @@ public class PrintActivity extends Activity {
                     e.printStackTrace();
                 }
             }
+        }
+
+        private void handleStatusUpdate(int mediaType, int mediaWidth, int mediaLength) {
+            mStatusView.setText("ステータス取得完了");
+            Paper p = null;
+            for (Paper candidate : Paper.values()) {
+                if (candidate.rawValue() == mediaType) {
+                    p = candidate;
+                    break;
+                }
+            }
+            mTapeTypeView.setText(p == null ? "不明なテープ(" + mediaType + ")" : p.name());
         }
 
         private void handleFinish() {
