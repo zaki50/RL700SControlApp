@@ -5,6 +5,7 @@ import org.zakky.rl700s.comm.RL700SCommands;
 import org.zakky.rl700s.comm.RL700SCommands.CommandMode;
 import org.zakky.rl700s.comm.RL700SCommands.CompressionMode;
 import org.zakky.rl700s.comm.RL700SCommands.EnhancedMode;
+import org.zakky.rl700s.comm.RL700SCommands.Mode;
 import org.zakky.rl700s.comm.RL700SCommands.Paper;
 import org.zakky.rl700s.comm.RL700SStatus;
 import org.zakky.rl700s.comm.RL700SStatus.ErrorInfo;
@@ -262,6 +263,9 @@ public class PrintActivity extends Activity {
         RL700SCommands.getSetMergin(outBuff, 20);
         send(conn, printer.out(), outBuff, 1000);
 
+//        RL700SCommands.getSetMode(outBuff, EnumSet.noneOf(Mode.class));
+//        send(conn, printer.out(), outBuff, 1000);
+//
         RL700SCommands.getSetEnhancedMode(outBuff,
                 EnumSet.of(EnhancedMode.HALF_CUT, EnhancedMode.CUT_ON_CHAIN_PRINT));
         send(conn, printer.out(), outBuff, 1000);
@@ -271,19 +275,15 @@ public class PrintActivity extends Activity {
         send(conn, printer.out(), outBuff, 1000);
 
         final Object[] rasterData = (Object[]) getIntent().getSerializableExtra("data");
-//        for (int i = 0; i < 150; i++) {
-//            RL700SCommands.getSendZeroRasterLine(outBuff);
-//            send(conn, printer.out(), outBuff, 1000);
-//        }
         for (int i = 0; i < rasterData.length; i++) {
             final byte[] line = (byte[]) rasterData[i];
             RL700SCommands.getSendRasterLine(outBuff, line, cmode);
             send(conn, printer.out(), outBuff, 1000);
         }
-        for (int i = 0; i < 1000; i++) {
-            RL700SCommands.getSendZeroRasterLine(outBuff);
-            send(conn, printer.out(), outBuff, 1000);
-        }
+//        for (int i = 0; i < 1000; i++) {
+//            RL700SCommands.getSendZeroRasterLine(outBuff);
+//            send(conn, printer.out(), outBuff, 1000);
+//        }
 
         RL700SCommands.getStartPrintWithEvacuation(outBuff);
         send(conn, printer.out(), outBuff, 1000);

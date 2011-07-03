@@ -154,36 +154,40 @@ public class AppSelectorActivity extends Activity implements OnItemClickListener
                 bmp.getWidth() - 1, bmp.getHeight() - 1), paint);
         final int[] pixels = new int[320 * 320];
         bmp.getPixels(pixels, 0, 320, 0, 0, 320, 320);
+
+        // Random Dithering で二値化する
         final Random rand = new Random();
         for (int i = 0; i < pixels.length; i++) {
             final int p = pixels[i];
-            final int r = Color.red(p);
-            final int g = Color.green(p);
-            final int b = Color.blue(p);
-            final int y = g * 587 / 1000 + r * 299 / 1000 + b * 114 / 1000;
+            // y=0.587*g+0.299*r+0.114b
+            final int y = Color.green(p) * 587 / 1000 //
+                    + Color.red(p) * 299 / 1000 //
+                    + Color.blue(p) * 114 / 1000;
 
-            int yb = (y < rand.nextInt(256)) ? 0 : 255;
-            pixels[i] = Color.argb(0xff, yb, yb, yb);
+            final int blackOrWhite = (y < rand.nextInt(256)) ? 0 : 255;
+            pixels[i] = Color.argb(0xff, blackOrWhite, blackOrWhite, blackOrWhite);
         }
 
+        // 二値化されたデータを印刷用ラスターデータに変換する
+        // TODO 二値化の際に変換も一緒に行ったほうが効率的
         final int bmpWidth = bmp.getWidth();
         final int bmpHeight = bmp.getHeight();
         final int black = Color.argb(0xff, 0, 0, 0);
         byte[][] rasterData = new byte[bmpWidth][];
         for (int w = 0; w < rasterData.length; w++) {
-            final byte[] line = new byte[4/*印刷されない領域分*/ + bmp.getHeight()/8];
+            final byte[] line = new byte[4/*印刷されない領域分*/+ bmp.getHeight() / 8];
             int d = 0;
             for (int h = 0; h < bmpHeight; h++) {
                 final int index = h * bmpWidth + w;
                 d <<= 1;
                 d += (pixels[index] == black ? 1 : 0);
                 if (h % 8 == 7) {
-                    line[4 + h/8] = (byte) d;
+                    line[4 + h / 8] = (byte) d;
                 }
             }
             rasterData[w] = line;
         }
-        
+
         final Intent intent = new Intent(this, PrintActivity.class);
         intent.putExtra("data", rasterData);
         startActivity(intent);
