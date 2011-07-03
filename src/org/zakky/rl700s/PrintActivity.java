@@ -201,15 +201,19 @@ public class PrintActivity extends Activity {
             mOut = out;
         }
 
-        private UsbDeviceConnection getConnection() {
+        public UsbDeviceConnection getConnection() {
             return mConnection;
         }
 
-        private UsbEndpoint in() {
+        public UsbInterface getInterface() {
+            return mInterface;
+        }
+
+        public UsbEndpoint in() {
             return mIn;
         }
 
-        private UsbEndpoint out() {
+        public UsbEndpoint out() {
             return mOut;
         }
     }
@@ -241,6 +245,9 @@ public class PrintActivity extends Activity {
 
     private void print(PrinterDevice printer) {
         final UsbDeviceConnection conn = printer.getConnection();
+
+        @SuppressWarnings("unused")
+        final UsbInterface iface = printer.getInterface();
 
         //final Paper paperType = Paper.SZ;
         final Paper paperType = Paper.LAMINATE;
@@ -431,8 +438,7 @@ public class PrintActivity extends Activity {
                         }
                     });
                 } catch (ParseException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    Log.e(TAG, "failed to parse status.", e);
                 }
             }
         }

@@ -291,6 +291,7 @@ public class AppSelectorActivity extends Activity implements OnItemClickListener
          *
          * @return FQCN
          */
+        @SuppressWarnings("unused")
         public String getActivityFqcn() {
             return activityFqcn_;
         }
@@ -300,6 +301,7 @@ public class AppSelectorActivity extends Activity implements OnItemClickListener
          *
          * @return パッケージ名。
          */
+        @SuppressWarnings("unused")
         public String getPackageName() {
             return packageName_;
         }
