@@ -249,8 +249,8 @@ public class PrintActivity extends Activity {
         @SuppressWarnings("unused")
         final UsbInterface iface = printer.getInterface();
 
-        //final Paper paperType = Paper.SZ;
-        final Paper paperType = Paper.LAMINATE;
+        final Paper paperType = Paper.SZ;
+        //final Paper paperType = Paper.LAMINATE;
 
         final StatusReceiver receiver = new StatusReceiver(conn, printer.in());
         new Thread(receiver).start();
