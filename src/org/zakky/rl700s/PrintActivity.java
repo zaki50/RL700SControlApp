@@ -243,6 +243,9 @@ public class PrintActivity extends Activity {
     private void print(PrinterDevice printer) {
         final UsbDeviceConnection conn = printer.getConnection();
 
+        //final Paper paperType = Paper.SZ;
+        final Paper paperType = Paper.LAMINATE;
+
         final StatusReceiver receiver = new StatusReceiver(conn, printer.in());
         new Thread(receiver).start();
 
@@ -257,15 +260,15 @@ public class PrintActivity extends Activity {
         RL700SCommands.getSwitchCommandMode(outBuff, CommandMode.RASTER);
         send(conn, printer.out(), outBuff, 1000);
 
-        RL700SCommands.getSetPrintInformation(outBuff, Paper.SZ, null, Integer.valueOf(100), true, false);
+        RL700SCommands.getSetPrintInformation(outBuff, paperType, null, null, true, false);
         send(conn, printer.out(), outBuff, 1000);
 
         RL700SCommands.getSetMergin(outBuff, 20);
         send(conn, printer.out(), outBuff, 1000);
 
-//        RL700SCommands.getSetMode(outBuff, EnumSet.noneOf(Mode.class));
-//        send(conn, printer.out(), outBuff, 1000);
-//
+        //        RL700SCommands.getSetMode(outBuff, EnumSet.noneOf(Mode.class));
+        //        send(conn, printer.out(), outBuff, 1000);
+        //
         RL700SCommands.getSetEnhancedMode(outBuff,
                 EnumSet.of(EnhancedMode.HALF_CUT, EnhancedMode.CUT_ON_CHAIN_PRINT));
         send(conn, printer.out(), outBuff, 1000);
@@ -280,10 +283,13 @@ public class PrintActivity extends Activity {
             RL700SCommands.getSendRasterLine(outBuff, line, cmode);
             send(conn, printer.out(), outBuff, 1000);
         }
-//        for (int i = 0; i < 1000; i++) {
-//            RL700SCommands.getSendZeroRasterLine(outBuff);
-//            send(conn, printer.out(), outBuff, 1000);
-//        }
+        if (paperType != Paper.SZ) {
+            // SZ 以外では、余計にデータを送らないとなぜか短く切られてしまう。
+            for (int i = 0; i < 300; i++) {
+                RL700SCommands.getSendZeroRasterLine(outBuff);
+                send(conn, printer.out(), outBuff, 1000);
+            }
+        }
 
         RL700SCommands.getStartPrintWithEvacuation(outBuff);
         send(conn, printer.out(), outBuff, 1000);
